@@ -1,0 +1,51 @@
+{
+  "sandwiches":[
+    {
+        "id":"s1",
+        "name": "Burguer",
+        "description": "Delicious beef burger with fresh lettuce, tomato, and cheese.",
+        "price": 5.00,
+        "image": "/images/burguer.jpg",
+        "category": "sandwiches",
+        "available": true
+    },
+    {
+        "id":"s2",
+        "name": "Egg",
+        "description": "Delicious egg sandwich with fresh lettuce, tomato, and cheese.",
+        "price": 4.50,
+        "image": "/images/egg.jpg",
+        "category": "sandwiches",
+        "available": true
+    },
+    {
+        "id":"s3",
+        "name": "Bacon",
+        "description": "Delicious bacon sandwich with fresh lettuce, tomato, and cheese.",
+        "price": 7.00,
+        "image": "/images/bacon.jpg",
+        "category": "sandwiches",
+        "available": true
+    }
+  ],
+    "extras": [
+      {
+          "id":"e1",
+          "name": "Fries",
+          "description": "Add a serving of fries to your order.",
+          "price": 2.00,
+          "image": "/images/fries.jpg",
+          "category": "extras",
+          "available": true
+      },
+      {
+          "id":"e2",
+          "name": "Soft Drink",
+          "description": "Add a refreshing soft drink to your order.",
+          "price": 2.50,
+          "image": "/images/soft_drink.jpg",
+          "category": "extras",
+          "available": true
+      }
+    ]  
+}
