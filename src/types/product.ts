@@ -4,7 +4,7 @@ export interface Product {
   description: string;
   price: number;
   image: string;
-  category: 'sandwich' | 'extras';
+  category: 'sandwiches' | 'extras';
   available: boolean;
 }
 
