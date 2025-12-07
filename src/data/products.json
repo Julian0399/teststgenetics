@@ -7,7 +7,8 @@
         "price": 5.00,
         "image": "/images/burguer.webp",
         "category": "sandwiches",
-        "available": true
+        "available": true,
+        "type": "sandwich"
     },
     {
         "id":"s2",
@@ -16,7 +17,8 @@
         "price": 4.50,
         "image": "/images/egg.webp",
         "category": "sandwiches",
-        "available": true
+        "available": true,
+        "type": "sandwich"
     },
     {
         "id":"s3",
@@ -25,7 +27,8 @@
         "price": 7.00,
         "image": "/images/bacon.webp",
         "category": "sandwiches",
-        "available": true
+        "available": true,
+        "type": "sandwich"
     }
   ],
     "extras": [
@@ -36,7 +39,8 @@
           "price": 2.00,
           "image": "/images/fries.webp",
           "category": "extras",
-          "available": true
+          "available": true,
+          "type": "fries"
       },
       {
           "id":"e2",
@@ -45,7 +49,8 @@
           "price": 2.50,
           "image": "/images/soft_drink2.webp",
           "category": "extras",
-          "available": true
+          "available": true,
+          "type": "drink"
       }
     ]  
 }

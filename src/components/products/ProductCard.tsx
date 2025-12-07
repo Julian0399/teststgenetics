@@ -9,7 +9,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
     
-    const addItem = useCartStore((state) => state.addItem);
+    const { addItem, error } = useCartStore();
     
     const handleAddToCart = () => {
         addItem(product);

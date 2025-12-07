@@ -4,26 +4,31 @@ import { useCartStore } from "@/store/useCartStore";
 import { useState, FormEvent } from "react";
 
 export function CartSummary() {
-  const { items, getTotal, clearCart } = useCartStore();
+  const { items, getTotal, getSubtotal, getDiscount, clearCart } = useCartStore();
   const [customerName, setCustomerName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
 
   const total = getTotal();
-
+    const subtotal = getSubtotal();
+    const discount = getDiscount();
   const handleSubmitOrder = (event: FormEvent) => {
     event.preventDefault();
+
     if (!customerName.trim()) return;
+
     setIsSubmitting(true);
 
     const order = {
       customerName: customerName.trim(),
       items: [...items],
       total,
+      subtotal,
+      discount,
       date: new Date(),
     };
+
     setTimeout(() => {
-      console.log("✅ Order submitted:", order);
       setOrderSuccess(true);
       setIsSubmitting(false);
       
@@ -46,6 +51,9 @@ export function CartSummary() {
         <p className="text-green-700 mb-4">
           Thank you for your purchase, {customerName}!
         </p>
+        <p className="text-sm text-green-600">
+            Redirecting you back to the menu...
+        </p>
       </div>
     );
   }
@@ -56,8 +64,20 @@ export function CartSummary() {
         <div className="space-y-4 mb-6 pb-6 border-b">
             <div className="flex justify-between text-gray-600">
                 <span>SubTotal</span>
-                <span>${total.toFixed(2)}</span>
+                <span>${subtotal.toFixed(2)}</span>
             </div>
+            { discount.percentage > 0 && (
+                <div className="bg-green-50 rounded-lg p-3 space-y-2">
+                    <div className="flex items-center gap-2 text-green-700 font-semibold">
+                        <span className="material-icons text-sm">local_offer</span>
+                        <span>{discount.description}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                        <span className="text-sm text-green-600">You have a discount of {discount.percentage}% </span>
+                        <span className="text-lg font-bold text-green-600"> -${discount.amount.toFixed(2)}</span>
+                    </div>
+                </div>
+            )}
             <div className="flex justify-between text-gray-600">
                 <span>Delivery</span>
                 <span>$0.00</span>
@@ -65,7 +85,14 @@ export function CartSummary() {
         </div>
         <div className="flex justify-between items-center mp-6 pb-6 mb-6 border-b">
             <span className="text-xl font-bold text-gray-800">Total</span>
+            <div className="text-right">
+                {discount.percentage > 0 && (
+                    <div className="text-sm text-gray-500 line-through">
+                        ${subtotal.toFixed(2)}
+                    </div>    
+                )}
             <span className="text-2xl font-bold text-orange-600">${total.toFixed(2)}</span>
+            </div>
         </div>
         <form onSubmit={handleSubmitOrder} className="space-y-4">
             <div>

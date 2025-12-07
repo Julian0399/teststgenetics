@@ -6,6 +6,8 @@ export interface Product {
   image: string;
   category: 'sandwiches' | 'extras';
   available: boolean;
+  type?: 'sandwich' | 'fries' | 'drink';
 }
 
 export type ProductCategory = Product['category'];
+export type ProductType = Product['type'];
