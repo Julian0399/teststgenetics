@@ -34,12 +34,12 @@ export default function CartPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-gray-800 mb-8">
+    <div className="container mx-auto px-4 py-8 max-w-7xl">
+      <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 flex items-center gap-2">
         My Cart <span className="material-icons">shopping_cart</span>
       </h1>
 
-      <div className="grid lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
         <div className="lg:col-span-2 space-y-4">
           {items.map((item) => (
             <CartItem key={item.id} item={item} />

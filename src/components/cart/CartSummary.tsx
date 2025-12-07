@@ -60,7 +60,6 @@ export function CartSummary() {
   return (
     <div className="bg-white rounded-lg shadow-lg p-6 sticky top-24">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Order Summary</h2>
-
         <div className="space-y-4 mb-6 pb-6 border-b">
             <div className="flex justify-between text-gray-600">
                 <span>SubTotal</span>

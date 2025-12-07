@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { ErrorToast } from "@/components/ui/ErrorToast";
+import { Footer } from "@/components/layout/Footer";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -36,11 +38,14 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <Navbar />
-        <ErrorToast />
-        {children}
+        <ErrorToast />       
+        <main className="grow bg-gray-50">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
