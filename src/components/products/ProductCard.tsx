@@ -1,13 +1,18 @@
 'use client'
 import { Product } from "@/types/product";
 import Image from "next/image";
+import { useCartStore } from "@/store/useCartStore";
 
 interface ProductCardProps {
     product: Product
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+    
+    const addItem = useCartStore((state) => state.addItem);
+    
     const handleAddToCart = () => {
+        addItem(product);
         console.log(`Adding ${product.name} to cart`);
     }
 
@@ -34,7 +39,7 @@ export function ProductCard({ product }: ProductCardProps) {
                     <button
                         onClick={handleAddToCart}
                         disabled={!product.available}
-                        className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors cursor-pointer"
                     >
                         Add to Cart
                     </button>
