@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCartStore } from "@/store/useCartStore";
 import { CartItem } from "@/components/cart/CartItem";
+import { CartSummary } from "@/components/cart/CartSummary";
 
 export default function CartPage() {
   const items = useCartStore((state) => state.items);
@@ -43,6 +44,10 @@ export default function CartPage() {
           {items.map((item) => (
             <CartItem key={item.id} item={item} />
           ))}
+        </div>
+
+        <div className="lg:col-span-1">
+          <CartSummary />
         </div>
       </div>
     </div>
