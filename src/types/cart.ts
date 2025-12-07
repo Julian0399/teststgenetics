@@ -5,6 +5,14 @@ export interface CartItem {
     name: string;
     price: number;
     quantity: number;
+    image: string;
+}
+
+export interface Order {
+    customerName: string;
+    items: CartItem[];
+    total: number;
+    date: Date;
 }
 
 export interface CartStore {

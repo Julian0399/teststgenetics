@@ -19,7 +19,7 @@ export const useCartStore = create<CartStore>()(
                 });
             } else {
                 set({
-                    items: [...items, { id: product.id, name: product.name, price: product.price, quantity: 1 }],
+                    items: [...items, { id: product.id, name: product.name, price: product.price, quantity: 1 , image: product.image }],
                 });
             }
         },
