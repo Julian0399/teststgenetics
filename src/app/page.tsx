@@ -1,14 +1,23 @@
+import { ProductGrid } from "@/components/products/ProductGrid";
+import productsData from "@/data/products.json"
+import { Product } from "@/types/product";
 
 export default function Home() {
+  const sandwiches = productsData.sandwiches as Product[];
+  const extras = productsData.extras as Product[];
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 dark:bg-black sm:items-start">
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            Hello GOOD HAMBURGER
-          </h1>
-        </div>
-      </main>
+    <div className="container mx-auto px-4 py-8">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">
+          Discounts 
+        </h1>
+        <p className="text-gray-600 text-lg">
+          If selecting a sandwich, fries, and a soft drink, receive a 20% discount. <br />
+          If selecting a sandwich and a soft drink, receive a 15% discount. <br />
+          If selecting a sandwich and fries, receive a 10% discount.
+        </p>
+      </div>
+      <ProductGrid products={[...sandwiches, ...extras]} />
     </div>
   );
 }
