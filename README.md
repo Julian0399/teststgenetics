@@ -54,4 +54,4 @@ Tests were created for the discount logic, a certain percentage of the logic per
 ## Application published on Vercel
 If you want to try out the application, you can do so via the Vercel link.
 
-https://.vercel.app/
+https://teststgenetics.vercel.app/
