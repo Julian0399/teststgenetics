@@ -8,7 +8,13 @@ This repository was used to create a store that had to meet certain requirements
 
 Among other things, such as displaying products, filtering them, and so on.
 
+## Tech Stack
 
+**Client:** React.ts,Next.js, Zustand, TailwindCSS,
+
+**Test:** Jest
+
+**Deploy:** Vercel
 
 ## Installation
 
@@ -32,6 +38,7 @@ Install dependencies
 8. Only the customer’s name is required to submit the order.
 9. Create a feature to display all submitted orders.
 10. The frontend should have a clean, professional design and be mobile-friendly
+
 ## Endpoints
 
 - We can access the home page /
