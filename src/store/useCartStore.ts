@@ -2,7 +2,8 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { Product } from "@/types/product";
 import { CartStore } from "@/types/cart";
-import { error } from "console";
+import { calculateDiscount, validateItemType } from "@/components/lib/discountCalculator";
+
 interface ExtendCartStore extends CartStore {
   error: string | null;
   setError: (error: string | null) => void;
@@ -21,41 +22,18 @@ export const useCartStore = create<ExtendCartStore>()(
 
       setError: (error: string | null) => set({ error }),
       addItem: (product: Product) => {
-        const items = get().items;
-        const existingItem = items.find((item) => item.id === product.id);
-        const productType = product.type;
-        const hasType = items.some((item) => {
-          const itemProduct = [
-            ...require("@/data/products.json").sandwiches,
-            ...require("@/data/products.json").extras,
-          ].find((p: Product) => p.id === item.id);
-          return itemProduct?.type === productType;
-        });
-        if (hasType && existingItem) {
-            const typeNames = {
-                sandwich: "sandwich",
-                fries: "fries",
-                drink: "softdrink"
-            }
-            set({
-                error: `You can only add one ${typeNames[productType as keyof typeof typeNames]} to the cart.`,
-            });
-
+        const items = get().items
+        const productsData = require('@/data/products.json')
+        const allProducts = [...productsData.sandwiches, ...productsData.extras] as Product[];
+        const validation = validateItemType(items, product, allProducts);
+        if (!validation.valid) {
+            set({ error: validation.error || null });
             setTimeout(() => {
                 set({ error: null });
             }, 5000);
             return;
         }
-        if (existingItem) {
-            set({
-                error: `This item is already in the cart. You can update the quantity from the cart page.`,
-            })
-            setTimeout(() => {
-                set({ error: null });
-            }, 5000);
-            return;
-        }
-            set({
+        set({
                 items:[...items,{
                 id: product.id,
                 name: product.name,
@@ -96,41 +74,7 @@ export const useCartStore = create<ExtendCartStore>()(
         const items = get().items;
         const productsData = require('@/data/products.json')
         const allPructs = [...productsData.sandwiches, ...productsData.extras] as Product[];
-
-        const types = items.map((item) => {
-            const product = allPructs.find((p) => p.id === item.id);
-            return product?.type;
-        })
-        const hasSandwich = types.includes('sandwich');
-        const hasFries = types.includes('fries');
-        const hasDrink = types.includes('drink');
-
-        const subtotal = get().getSubtotal();
-
-        if (hasSandwich && hasFries && hasDrink) {
-            return {
-                percentage: 20,
-                amount: subtotal * 0.20,
-                description: '20% discount for sandwich, fries, and drink combo'
-            }
-        } else if (hasSandwich && hasDrink) {
-            return {
-                percentage: 15,
-                amount: subtotal * 0.15,
-                description: '15% discount for sandwich and drink combo'
-            }
-        } else if (hasSandwich && hasFries) {
-            return {
-                percentage: 10,
-                amount: subtotal * 0.10,
-                description: '10% discount for sandwich and fries combo'
-            }
-        }
-        return {
-            percentage: 0,
-            amount: 0,
-            description: 'No discount applied'
-        }
+        return calculateDiscount(items, allPructs);
       },
       getTotal: () => {
         const subtotal = get().getSubtotal()

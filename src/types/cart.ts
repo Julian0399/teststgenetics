@@ -9,9 +9,16 @@ export interface CartItem {
 }
 
 export interface Order {
+    id: string;
     customerName: string;
     items: CartItem[];
     total: number;
+    subtotal: number;
+    discount: {
+        percentage: number;
+        amount: number;
+        description: string;
+    }
     date: Date;
 }
 

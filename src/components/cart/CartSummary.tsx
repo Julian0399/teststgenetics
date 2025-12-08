@@ -1,6 +1,7 @@
 "use client";
 
 import { useCartStore } from "@/store/useCartStore";
+import { useOrderStore } from "@/store/useOrderStore";
 import { useState, FormEvent } from "react";
 
 export function CartSummary() {
@@ -8,6 +9,7 @@ export function CartSummary() {
   const [customerName, setCustomerName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
+  const addOrder = useOrderStore((state) => state.addOrder);
 
   const total = getTotal();
     const subtotal = getSubtotal();
@@ -29,6 +31,7 @@ export function CartSummary() {
     };
 
     setTimeout(() => {
+      addOrder(order);
       setOrderSuccess(true);
       setIsSubmitting(false);
       

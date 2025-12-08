@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# STgenetics technical test
 
-First, run the development server:
+This repository was used to create a store that had to meet certain requirements:
+1. If the customer selects a sandwich, fries, and a soft drink, they will receive a 20% discount.
+2. If the customer selects a sandwich and a soft drink, they will receive a 15% discount.
+3. If the customer selects a sandwich and fries, they will receive a 10% discount.
 
+Among other things, such as displaying products, filtering them, and so on.
+
+
+
+## Installation
+
+Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/Julian0399/teststgenetics.git
+```
+Install dependencies
+```bash
+  npm install 
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
+1. Create a feature to display all sandwiches and extras.
+2. Create a filter to show only sandwiches.
+3. Create a filter to show only extras.
+4. Create a feature to add items to the cart.
+5. Create a feature to display all items currently in the cart.
+6. Create a feature to submit the order and display the final total payment.
+7. No payment entry is required.
+8. Only the customer’s name is required to submit the order.
+9. Create a feature to display all submitted orders.
+10. The frontend should have a clean, professional design and be mobile-friendly
+## Endpoints
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- We can access the home page /
+- Access the shopping cart /cart
+- View to see all orders /orders
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Once you have completed the previous steps and know what the application can do, to run the repository locally, the command is:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+  npm run dev
+```
 
-## Deploy on Vercel
+## Application published on Vercel
+If you want to try out the application, you can do so via the Vercel link.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+https://prueba-tecnica-nutrabiotics.vercel.app/
