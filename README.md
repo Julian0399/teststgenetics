@@ -39,7 +39,6 @@ Install dependencies
 - View to see all orders /orders
 
 
-
 ## Deployment
 
 Once you have completed the previous steps and know what the application can do, to run the repository locally, the command is:
@@ -47,8 +46,12 @@ Once you have completed the previous steps and know what the application can do,
 ```bash
   npm run dev
 ```
-
+## Test
+Tests were created for the discount logic, a certain percentage of the logic per test is missing, but 3 were still made. The command to run them is:
+```bash
+  npm test
+```
 ## Application published on Vercel
 If you want to try out the application, you can do so via the Vercel link.
 
-https://prueba-tecnica-nutrabiotics.vercel.app/
+https://.vercel.app/
